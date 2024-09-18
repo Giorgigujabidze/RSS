@@ -48,21 +48,8 @@ type Rss struct {
 }
 
 func Worker(dbQueries *database.Queries) {
-	// err := godotenv.Load("/home/gio/Documents/RSS/.env")
-	// if err != nil {
-	// 	fmt.Println("Error loading .env file:", err)
-	// 	return
-	// }
-
-	// dbUrl := os.Getenv("CONN")
-	// db, err := sql.Open("postgres", dbUrl)
-	// if err != nil {
-	// 	fmt.Println("Error opening database:", err)
-	// 	return
-	// }
 
 	args := &Args{Limit: 10, Offset: 0}
-	//	dbQueries := database.New(db)
 	apiCfg := apiCfg{DB: dbQueries}
 	feeds := apiCfg.fetchFeedsFromDB(args)
 	apiCfg.markFeedsFetched(feeds)
